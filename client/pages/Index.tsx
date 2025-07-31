@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { 
+import {
   ArrowRight,
   Star,
   Truck,
@@ -13,7 +18,7 @@ import {
   Mail,
   ChevronLeft,
   ChevronRight,
-  Heart
+  Heart,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +34,7 @@ const featuredProducts = [
     rating: 4.8,
     reviews: 124,
     isNew: false,
-    onSale: true
+    onSale: true,
   },
   {
     id: 2,
@@ -40,7 +45,7 @@ const featuredProducts = [
     rating: 4.9,
     reviews: 89,
     isNew: true,
-    onSale: false
+    onSale: false,
   },
   {
     id: 3,
@@ -51,7 +56,7 @@ const featuredProducts = [
     rating: 4.7,
     reviews: 156,
     isNew: false,
-    onSale: false
+    onSale: false,
   },
   {
     id: 4,
@@ -62,7 +67,7 @@ const featuredProducts = [
     rating: 4.9,
     reviews: 203,
     isNew: true,
-    onSale: false
+    onSale: false,
   },
   {
     id: 5,
@@ -73,7 +78,7 @@ const featuredProducts = [
     rating: 4.6,
     reviews: 78,
     isNew: false,
-    onSale: false
+    onSale: false,
   },
   {
     id: 6,
@@ -84,8 +89,8 @@ const featuredProducts = [
     rating: 4.8,
     reviews: 92,
     isNew: false,
-    onSale: false
-  }
+    onSale: false,
+  },
 ];
 
 // Categories for filtering
@@ -95,7 +100,7 @@ const categories = [
   { id: "women", name: "Women", count: 55 },
   { id: "graphic", name: "Graphic", count: 30 },
   { id: "plain", name: "Plain", count: 45 },
-  { id: "oversized", name: "Oversized", count: 25 }
+  { id: "oversized", name: "Oversized", count: 25 },
 ];
 
 // Testimonials data
@@ -106,7 +111,7 @@ const testimonials = [
     avatar: "/api/placeholder/60/60",
     text: "Best T-shirts I've ever owned. The quality is incredible and they get softer with every wash!",
     rating: 5,
-    verified: true
+    verified: true,
   },
   {
     id: 2,
@@ -114,7 +119,7 @@ const testimonials = [
     avatar: "/api/placeholder/60/60",
     text: "Love the fit and feel. These tees are my go-to for work and weekend. Highly recommend!",
     rating: 5,
-    verified: true
+    verified: true,
   },
   {
     id: 3,
@@ -122,18 +127,18 @@ const testimonials = [
     avatar: "/api/placeholder/60/60",
     text: "Sustainable fashion that doesn't compromise on style. ThreadCo is doing it right!",
     rating: 5,
-    verified: true
-  }
+    verified: true,
+  },
 ];
 
-function ProductCard({ product }: { product: typeof featuredProducts[0] }) {
+function ProductCard({ product }: { product: (typeof featuredProducts)[0] }) {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
     <Card className="group overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-300">
       <div className="relative overflow-hidden bg-gray-50">
-        <img 
-          src={product.image} 
+        <img
+          src={product.image}
           alt={product.name}
           className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -145,11 +150,16 @@ function ProductCard({ product }: { product: typeof featuredProducts[0] }) {
             <Badge className="bg-red-500 hover:bg-red-600">Sale</Badge>
           )}
         </div>
-        <button 
+        <button
           onClick={() => setIsLiked(!isLiked)}
           className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200"
         >
-          <Heart className={cn("h-4 w-4", isLiked ? "fill-red-500 text-red-500" : "text-gray-600")} />
+          <Heart
+            className={cn(
+              "h-4 w-4",
+              isLiked ? "fill-red-500 text-red-500" : "text-gray-600",
+            )}
+          />
         </button>
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300" />
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -162,14 +172,20 @@ function ProductCard({ product }: { product: typeof featuredProducts[0] }) {
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-1">
             <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-            <span className="text-sm text-gray-600">{product.rating} ({product.reviews})</span>
+            <span className="text-sm text-gray-600">
+              {product.rating} ({product.reviews})
+            </span>
           </div>
         </div>
-        <CardTitle className="text-base font-medium mb-2">{product.name}</CardTitle>
+        <CardTitle className="text-base font-medium mb-2">
+          {product.name}
+        </CardTitle>
         <div className="flex items-center gap-2">
           <span className="text-lg font-semibold">${product.price}</span>
           {product.originalPrice && (
-            <span className="text-sm text-gray-500 line-through">${product.originalPrice}</span>
+            <span className="text-sm text-gray-500 line-through">
+              ${product.originalPrice}
+            </span>
           )}
         </div>
       </CardContent>
@@ -177,7 +193,11 @@ function ProductCard({ product }: { product: typeof featuredProducts[0] }) {
   );
 }
 
-function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
+function TestimonialCard({
+  testimonial,
+}: {
+  testimonial: (typeof testimonials)[0];
+}) {
   return (
     <Card className="p-6 h-full">
       <CardContent className="p-0">
@@ -188,8 +208,8 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
         </div>
         <p className="text-gray-700 mb-4">"{testimonial.text}"</p>
         <div className="flex items-center gap-3">
-          <img 
-            src={testimonial.avatar} 
+          <img
+            src={testimonial.avatar}
             alt={testimonial.name}
             className="w-10 h-10 rounded-full object-cover"
           />
@@ -220,12 +240,12 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] bg-gray-900 overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="/api/placeholder/1920/800" 
+          <img
+            src="/api/placeholder/1920/800"
             alt="Hero"
             className="w-full h-full object-cover"
           />
@@ -239,10 +259,13 @@ export default function Index() {
               <span className="text-gray-300">Built to Last</span>
             </h1>
             <p className="text-xl mb-8 text-gray-200 max-w-lg">
-              Discover our collection of sustainably made, premium quality T-shirts. 
-              Comfort meets style in every thread.
+              Discover our collection of sustainably made, premium quality
+              T-shirts. Comfort meets style in every thread.
             </p>
-            <Button size="lg" className="bg-white text-black hover:bg-gray-100 text-lg px-8 py-6">
+            <Button
+              size="lg"
+              className="bg-white text-black hover:bg-gray-100 text-lg px-8 py-6"
+            >
               Shop Now
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -262,7 +285,7 @@ export default function Index() {
                   "px-6 py-2 rounded-full font-medium transition-colors",
                   selectedCategory === category.id
                     ? "bg-gray-900 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200",
                 )}
               >
                 {category.name} ({category.count})
@@ -280,16 +303,17 @@ export default function Index() {
               Featured Products
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover our bestselling T-shirts, loved by thousands of customers worldwide
+              Discover our bestselling T-shirts, loved by thousands of customers
+              worldwide
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
             <Button variant="outline" size="lg">
               View All Products
@@ -308,21 +332,29 @@ export default function Index() {
                 <Truck className="h-8 w-8 text-gray-900" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Free Shipping</h3>
-              <p className="text-gray-600">Free shipping on orders over $50. Fast delivery worldwide.</p>
+              <p className="text-gray-600">
+                Free shipping on orders over $50. Fast delivery worldwide.
+              </p>
             </div>
             <div className="text-center">
               <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
                 <Leaf className="h-8 w-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">100% Organic Cotton</h3>
-              <p className="text-gray-600">Sustainably sourced, organic cotton for ultimate comfort.</p>
+              <h3 className="text-xl font-semibold mb-2">
+                100% Organic Cotton
+              </h3>
+              <p className="text-gray-600">
+                Sustainably sourced, organic cotton for ultimate comfort.
+              </p>
             </div>
             <div className="text-center">
               <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
                 <Shield className="h-8 w-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Quality Guarantee</h3>
-              <p className="text-gray-600">30-day money-back guarantee. We stand behind our quality.</p>
+              <p className="text-gray-600">
+                30-day money-back guarantee. We stand behind our quality.
+              </p>
             </div>
           </div>
         </div>
@@ -336,10 +368,11 @@ export default function Index() {
               What Our Customers Say
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what real customers think about ThreadCo
+              Don't just take our word for it. Here's what real customers think
+              about ThreadCo
             </p>
           </div>
-          
+
           <div className="relative">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
@@ -347,30 +380,36 @@ export default function Index() {
                   key={testimonial.id}
                   className={cn(
                     "transition-opacity duration-300",
-                    index === currentTestimonial ? "opacity-100" : "opacity-100 md:opacity-50"
+                    index === currentTestimonial
+                      ? "opacity-100"
+                      : "opacity-100 md:opacity-50",
                   )}
                 >
                   <TestimonialCard testimonial={testimonial} />
                 </div>
               ))}
             </div>
-            
+
             <div className="flex justify-center mt-8 gap-4">
               <Button
                 variant="outline"
                 size="icon"
-                onClick={() => setCurrentTestimonial((prev) => 
-                  prev === 0 ? testimonials.length - 1 : prev - 1
-                )}
+                onClick={() =>
+                  setCurrentTestimonial((prev) =>
+                    prev === 0 ? testimonials.length - 1 : prev - 1,
+                  )
+                }
               >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
-                onClick={() => setCurrentTestimonial((prev) => 
-                  (prev + 1) % testimonials.length
-                )}
+                onClick={() =>
+                  setCurrentTestimonial(
+                    (prev) => (prev + 1) % testimonials.length,
+                  )
+                }
               >
                 <ChevronRight className="h-4 w-4" />
               </Button>
@@ -387,10 +426,11 @@ export default function Index() {
             Stay in the Loop
           </h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Be the first to know about new arrivals, exclusive deals, and special promotions. 
-            Join our newsletter for 10% off your first order!
+            Be the first to know about new arrivals, exclusive deals, and
+            special promotions. Join our newsletter for 10% off your first
+            order!
           </p>
-          
+
           <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto">
             <div className="flex gap-4">
               <input
@@ -401,12 +441,15 @@ export default function Index() {
                 className="flex-1 px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-white"
                 required
               />
-              <Button type="submit" className="bg-white text-black hover:bg-gray-100 px-6">
+              <Button
+                type="submit"
+                className="bg-white text-black hover:bg-gray-100 px-6"
+              >
                 Subscribe
               </Button>
             </div>
           </form>
-          
+
           <p className="text-sm text-gray-400 mt-4">
             No spam, unsubscribe at any time.
           </p>

@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 
 export const handlePlaceholder: RequestHandler = (req, res) => {
   const { width = 400, height = 400 } = req.params;
-  
+
   // Generate a simple SVG placeholder
   const svg = `
     <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +13,7 @@ export const handlePlaceholder: RequestHandler = (req, res) => {
       </text>
     </svg>
   `;
-  
-  res.setHeader('Content-Type', 'image/svg+xml');
+
+  res.setHeader("Content-Type", "image/svg+xml");
   res.send(svg);
 };

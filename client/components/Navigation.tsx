@@ -2,13 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { 
-  ShoppingBag, 
-  User, 
-  Menu, 
-  X,
-  Search
-} from "lucide-react";
+import { ShoppingBag, User, Menu, X, Search } from "lucide-react";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,32 +22,32 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               Home
             </Link>
-            <Link 
-              to="/shop" 
+            <Link
+              to="/shop"
               className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               Shop
             </Link>
-            <Link 
-              to="/collections" 
+            <Link
+              to="/collections"
               className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               Collections
             </Link>
-            <Link 
-              to="/about" 
+            <Link
+              to="/about"
               className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               About Us
             </Link>
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
             >
               Contact
@@ -76,54 +70,62 @@ export default function Navigation() {
             </Button>
 
             {/* Mobile menu button */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               className="md:hidden"
               onClick={toggleMobileMenu}
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </div>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div className={cn(
-        "md:hidden transition-all duration-300 ease-in-out border-t border-gray-200",
-        isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-      )}>
+      <div
+        className={cn(
+          "md:hidden transition-all duration-300 ease-in-out border-t border-gray-200",
+          isMobileMenuOpen
+            ? "max-h-screen opacity-100"
+            : "max-h-0 opacity-0 overflow-hidden",
+        )}
+      >
         <div className="px-4 py-4 space-y-4 bg-white">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="block text-gray-700 hover:text-gray-900 font-medium transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Home
           </Link>
-          <Link 
-            to="/shop" 
+          <Link
+            to="/shop"
             className="block text-gray-700 hover:text-gray-900 font-medium transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Shop
           </Link>
-          <Link 
-            to="/collections" 
+          <Link
+            to="/collections"
             className="block text-gray-700 hover:text-gray-900 font-medium transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Collections
           </Link>
-          <Link 
-            to="/about" 
+          <Link
+            to="/about"
             className="block text-gray-700 hover:text-gray-900 font-medium transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             About Us
           </Link>
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className="block text-gray-700 hover:text-gray-900 font-medium transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
